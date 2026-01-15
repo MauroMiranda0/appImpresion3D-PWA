@@ -130,6 +130,27 @@
       cursor: pointer;
     }
 
+    .boton-guardar {
+      display: flex;
+      justify-content: center;
+    }
+
+    .guardar-btn {
+      width: 100%;
+      max-width: 220px;
+    }
+
+    @media (min-width: 769px) {
+      .boton-guardar {
+        justify-content: flex-end;
+      }
+
+      .guardar-btn {
+        width: auto;
+        padding: 10px 24px;
+      }
+    }
+
     button:hover {
       opacity: .9
     }
@@ -224,11 +245,6 @@
       margin: 0;
     }
 
-    .quantity-control input::-webkit-outer-spin-button,
-    .quantity-control input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
   </style>
 </head>
 
@@ -326,8 +342,8 @@
           <label>Imagen de la pieza</label>
           <input id="imagen" type="file" accept="image/*">
         </div>
-        <div class="campo full">
-          <button onclick="guardar()">Guardar pieza</button>
+        <div class="campo full boton-guardar">
+          <button class="guardar-btn" onclick="guardar()">Guardar pieza</button>
         </div>
       </div>
     </div>
