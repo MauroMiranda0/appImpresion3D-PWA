@@ -1,0 +1,16 @@
+{
+  "name": "App Impresion 3D",
+  "short_name": "Impresion 3D",
+  "description": "Aplicación PWA para gestionar impresiones 3D.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1b1f3b",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

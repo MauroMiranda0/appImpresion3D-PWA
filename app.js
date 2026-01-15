@@ -94,3 +94,11 @@ function abrir(s) { modalImg.src = s; modal.style.display = "block"; }
 function cerrarModal() { modal.style.display = "none"; }
 
 mostrar();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(err => {
+      console.error("Service worker registration failed:", err);
+    });
+  });
+}
