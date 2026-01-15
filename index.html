@@ -42,6 +42,13 @@
       padding: 20px;
     }
 
+    .logo {
+      display: block;
+      margin: 20px auto 10px;
+      max-width: 160px;
+      height: auto;
+    }
+
     /* TITULO */
     .titulo {
       text-align: center;
@@ -174,22 +181,36 @@
     }
 
     .quantity-control {
-      display: flex;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      gap: 10px;
       background-color: var(--panel-oscuro);
       border: 1px solid var(--borde);
-      border-radius: 6px;
-      padding: 4px;
-      width: fit-content;
-      max-width: 100%;
+      border-radius: 8px;
+      padding: 8px 10px;
       margin: 5px 0 10px;
-      gap: 6px;
+    }
+
+    .quantity-control button {
+      background: none;
+      border: none;
+      color: var(--texto);
+      font-size: 1.1em;
+      cursor: pointer;
+      padding: 4px 8px;
+      min-width: 30px;
+      min-height: 30px;
+    }
+
+    .quantity-control button:hover {
+      color: var(--acento);
     }
 
     .quantity-control input {
       width: 60px;
       text-align: center;
-      background-color: transparent;
+      background: none;
       color: var(--texto);
       border: none;
       font-size: 1em;
@@ -199,25 +220,14 @@
       padding: 4px 0;
     }
 
+    .btn-minus, .btn-plus {
+      margin: 0;
+    }
+
     .quantity-control input::-webkit-outer-spin-button,
     .quantity-control input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
-    }
-
-    .quantity-control button {
-      background: none;
-      border: none;
-      color: var(--texto-secundario);
-      font-size: 1.2em;
-      cursor: pointer;
-      padding: 6px 10px;
-      transition: color 0.2s;
-      width: auto;
-    }
-
-    .quantity-control button:hover {
-      color: var(--acento);
     }
   </style>
 </head>
@@ -225,6 +235,7 @@
 <body>
 
   <div class="contenedor">
+    <img src="logo.png" class="logo" alt="Logo Impresión 3D">
 
     <h1 class="titulo">
       CONTROL DE COSTOS
