@@ -39,7 +39,6 @@
       min-height: 100vh;
     }
 
-    /* CONTENEDOR */
     .contenedor {
       width: 100%;
       max-width: 960px;
@@ -54,7 +53,6 @@
       height: auto;
     }
 
-    /* TITULO */
     .titulo {
       text-align: center;
       font-size: 2.4em;
@@ -76,7 +74,6 @@
       opacity: .9;
     }
 
-    /* TARJETAS */
     .card {
       background: var(--panel);
       border: 1px solid var(--borde);
@@ -101,7 +98,6 @@
       grid-column: 1 / -1;
     }
 
-    /* INPUTS */
     label {
       font-size: .8em;
       color: var(--texto-secundario);
@@ -117,12 +113,22 @@
       border-radius: 8px;
     }
 
+    /* ELIMINAR SPIN BUTTONS (FLECHITAS) */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
     input:focus {
       outline: none;
       border-color: var(--rojo);
     }
 
-    /* BOTONES */
     button {
       width: 100%;
       padding: 12px;
@@ -143,7 +149,6 @@
 
     .guardar-btn {
       width: 100%;
-      max-width: 220px;
     }
 
     @media (min-width: 769px) {
@@ -152,7 +157,7 @@
       }
 
       .guardar-btn {
-        width: auto;
+        max-width: 220px;
         padding: 10px 24px;
       }
     }
@@ -161,16 +166,12 @@
       opacity: .9
     }
 
-    /* TABLA */
     .tabla-wrapper {
       width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
-      min-width: 680px;
       border-collapse: collapse;
       margin-top: 15px;
     }
@@ -179,39 +180,13 @@
       background: var(--tabla-encabezado);
       padding: 10px;
       border-bottom: 1px solid var(--borde);
+      text-align: left;
     }
 
     td {
-      padding: 8px;
+      padding: 12px 8px;
       border-bottom: 1px solid var(--tabla-borde);
       font-size: .9em;
-    }
-
-    img {
-      width: min(18vw, 70px);
-      height: min(18vw, 70px);
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    a {
-      color: var(--enlace)
-    }
-
-    /* MODAL IMAGEN */
-    #modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--modal-fondo);
-      z-index: 9999;
-    }
-
-    #modal img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
 
     .quantity-control {
@@ -235,10 +210,7 @@
       padding: 4px 8px;
       min-width: 30px;
       min-height: 30px;
-    }
-
-    .quantity-control button:hover {
-      color: var(--acento);
+      margin: 0;
     }
 
     .quantity-control input {
@@ -248,143 +220,139 @@
       color: var(--texto);
       border: none;
       font-size: 1em;
-      font-family: inherit;
-      appearance: textfield;
       margin: 0;
       padding: 4px 0;
     }
 
-    .btn-minus, .btn-plus {
-      margin: 0;
-    }
-
+    /* DISEÑO VERTICAL PARA MÓVILES */
     @media (max-width: 768px) {
-      body {
-        font-size: 15px;
-      }
 
-      .titulo {
-        font-size: 2em;
-      }
-
-      .card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      }
-
-      .quantity-control {
-        width: 100%;
-        justify-content: space-between;
-        gap: 6px;
-        padding: 6px 8px;
-      }
-
-      .quantity-control input {
-        width: 80px;
-      }
-
-      table {
-        min-width: 560px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      body {
-        font-size: 14px;
-      }
-
-      .titulo {
-        font-size: 1.7em;
-        letter-spacing: 1px;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .quantity-control {
-        flex-wrap: wrap;
-      }
-
-      .quantity-control input {
-        flex: 1;
-        min-width: 100px;
-      }
-
-      button {
-        font-size: 0.95em;
-      }
-
+      table,
+      thead,
+      tbody,
       th,
-      td {
-        padding: 8px 6px;
+      td,
+      tr {
+        display: block;
       }
 
-      table {
-        min-width: 480px;
+      thead tr {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--borde);
+        border-radius: 10px;
+        padding: 10px;
+        background: var(--panel-oscuro);
+      }
+
+      td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        padding: 8px 5px;
+        text-align: right;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: var(--rojo2);
+        text-transform: uppercase;
+        font-size: 0.75em;
+        margin-right: 15px;
+      }
+
+      td:last-child {
+        justify-content: center;
+        border-top: 1px solid var(--borde);
+        margin-top: 10px;
+      }
+
+      td:last-child::before {
+        content: "";
       }
     }
 
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--modal-fondo);
+      z-index: 9999;
+    }
+
+    #modal img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    a {
+      color: var(--enlace);
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
-
   <div class="contenedor">
-    <img src="logo.png" class="logo" alt="Logo Impresión 3D">
-
-    <h1 class="titulo">
-      CONTROL DE COSTOS
-      <span>IMPRESIÓN 3D</span>
-    </h1>
+    <img src="logo.png" class="logo" alt="Logo">
+    <h1 class="titulo">CONTROL DE COSTOS <span>IMPRESIÓN 3D</span></h1>
 
     <div class="card">
       <div class="card-grid">
-        <div class="campo full">
-          <label>Nombre de la pieza</label>
-          <input id="nombre">
-        </div>
-        <div class="campo full">
-          <label>Link de la pieza (obligatorio)</label>
-          <input id="link">
-        </div>
+        <div class="campo full"><label>Nombre de la pieza</label><input id="nombre"></div>
+        <div class="campo full"><label>Link de la pieza</label><input id="link"></div>
         <div class="campo">
           <label>Horas</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('horas', -1)">-</button>
-            <input id="horas" type="number" placeholder="Horas" min="0" max="999">
-            <button type="button" class="btn-plus" onclick="stepInput('horas', 1)">+</button>
+            <button type="button" onclick="stepInput('horas', -1)">-</button>
+            <input id="horas" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('horas', 1)">+</button>
           </div>
         </div>
         <div class="campo">
           <label>Minutos</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('minutos', -1)">-</button>
-            <input id="minutos" type="number" placeholder="Minutos" min="0" max="999">
-            <button type="button" class="btn-plus" onclick="stepInput('minutos', 1)">+</button>
+            <button type="button" onclick="stepInput('minutos', -1)">-</button>
+            <input id="minutos" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('minutos', 1)">+</button>
           </div>
         </div>
         <div class="campo">
           <label>Gramos usados</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('gramos', -1)">-</button>
-            <input id="gramos" type="number" min="0" max="9999">
-            <button type="button" class="btn-plus" onclick="stepInput('gramos', 1)">+</button>
+            <button type="button" onclick="stepInput('gramos', -1)">-</button>
+            <input id="gramos" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('gramos', 1)">+</button>
           </div>
         </div>
         <div class="campo">
-          <label>Mano de obra ($/hora)</label>
+          <label>Mano de obra ($/h)</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('manoObra', -1)">-</button>
-            <input id="manoObra" type="number" min="0" max="999">
-            <button type="button" class="btn-plus" onclick="stepInput('manoObra', 1)">+</button>
+            <button type="button" onclick="stepInput('manoObra', -1)">-</button>
+            <input id="manoObra" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('manoObra', 1)">+</button>
           </div>
         </div>
         <div class="campo">
           <label>Ganancia (%)</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('ganancia', -1)">-</button>
-            <input id="ganancia" type="number" min="0" max="100">
-            <button type="button" class="btn-plus" onclick="stepInput('ganancia', 1)">+</button>
+            <button type="button" onclick="stepInput('ganancia', -1)">-</button>
+            <input id="ganancia" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('ganancia', 1)">+</button>
           </div>
         </div>
       </div>
@@ -392,24 +360,21 @@
 
     <div class="card">
       <div class="card-grid">
-        <div class="campo full">
-          <label>Material extra</label>
-          <input id="materialExtra">
-        </div>
+        <div class="campo full"><label>Material extra</label><input id="materialExtra"></div>
         <div class="campo">
           <label>Cantidad</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('cantidadExtra', -1)">-</button>
-            <input id="cantidadExtra" type="number" min="0" max="999">
-            <button type="button" class="btn-plus" onclick="stepInput('cantidadExtra', 1)">+</button>
+            <button type="button" onclick="stepInput('cantidadExtra', -1)">-</button>
+            <input id="cantidadExtra" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('cantidadExtra', 1)">+</button>
           </div>
         </div>
         <div class="campo">
-          <label>Costo material extra ($)</label>
+          <label>Costo extra ($)</label>
           <div class="quantity-control">
-            <button type="button" class="btn-minus" onclick="stepInput('costoExtra', -1)">-</button>
-            <input id="costoExtra" type="number" min="0" max="9999">
-            <button type="button" class="btn-plus" onclick="stepInput('costoExtra', 1)">+</button>
+            <button type="button" onclick="stepInput('costoExtra', -1)">-</button>
+            <input id="costoExtra" type="number" value="0" min="0">
+            <button type="button" onclick="stepInput('costoExtra', 1)">+</button>
           </div>
         </div>
       </div>
@@ -417,10 +382,7 @@
 
     <div class="card">
       <div class="card-grid">
-        <div class="campo full">
-          <label>Imagen de la pieza</label>
-          <input id="imagen" type="file" accept="image/*">
-        </div>
+        <div class="campo full"><label>Imagen</label><input id="imagen" type="file" accept="image/*"></div>
         <div class="campo full boton-guardar">
           <button class="guardar-btn" onclick="guardar()">Guardar pieza</button>
         </div>
@@ -429,14 +391,14 @@
 
     <div class="card">
       <div class="tabla-wrapper">
-        <table>
+        <table class="tabla-responsive">
           <thead>
             <tr>
               <th>Imagen</th>
               <th>Nombre</th>
               <th>Link</th>
               <th>Material</th>
-              <th>Cant.</th>
+              <th>Cantidad</th>
               <th>Costo pieza</th>
               <th>Público</th>
               <th>X</th>
@@ -446,15 +408,10 @@
         </table>
       </div>
     </div>
-
   </div>
 
-  <div id="modal" onclick="cerrarModal()">
-    <img id="modalImg">
-  </div>
-
+  <div id="modal" onclick="cerrarModal()"><img id="modalImg"></div>
   <script src="app.js"></script>
-
 </body>
 
 </html>

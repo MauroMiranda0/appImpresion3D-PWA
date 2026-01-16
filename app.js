@@ -13,32 +13,10 @@ function guardar() {
     return;
   }
 
-  const controles = [
-    { valor: g, campo: "Gramos usados", permiteCero: false },
-    { valor: mo, campo: "Mano de obra", permiteCero: false },
-    { valor: ga, campo: "Ganancia (%)", permiteCero: true },
-    { valor: h, campo: "Horas", permiteCero: true },
-    { valor: m, campo: "Minutos", permiteCero: true },
-    { valor: ce, campo: "Costo material extra", permiteCero: true }
-  ];
-
-  const invalido = controles.find(c =>
-    Number.isNaN(c.valor) ||
-    c.valor < 0 ||
-    (!c.permiteCero && c.valor === 0)
-  );
-
-  if (invalido) {
-    alert(`Revisa el campo: ${invalido.campo}`);
-    return;
-  }
-
   let tiempo = h + m / 60;
   let costoReal = (COSTO_KG / 1000) * g + tiempo * mo;
-
   let d = g >= 100 ? 25 : g >= 50 ? 20 : g >= 20 ? 15 : 10;
   let costoP = (costoReal - d) + ce;
-
   let costoPub = costoP + (costoP * ga / 100);
 
   if (img) {
@@ -57,48 +35,37 @@ function guardarR(n, l, m, c, cp, cu, i) {
 
 function mostrar() {
   const piezas = JSON.parse(localStorage.getItem("piezas3D")) || [];
+  const tabla = document.getElementById("tabla");
   tabla.innerHTML = piezas.map((p, x) => `
     <tr>
-      <td>${p.i ? `<img src="${p.i}" onclick="abrir('${p.i}')">` : "-"}</td>
-      <td>${p.n}</td>
-      <td><a href="${p.l}" target="_blank">Abrir</a></td>
-      <td>${p.m}</td>
-      <td>${p.c}</td>
-      <td>$${p.cp}</td>
-      <td>$${p.cu}</td>
-      <td><button onclick="borrar(${x})">X</button></td>
+      <td data-label="Imagen">${p.i ? `<img src="${p.i}" onclick="abrir('${p.i}')">` : "-"}</td>
+      <td data-label="Nombre">${p.n}</td>
+      <td data-label="Link"><a href="${p.l}" target="_blank">Abrir</a></td>
+      <td data-label="Material">${p.m || "-"}</td>
+      <td data-label="Cant.">${p.c || "-"}</td>
+      <td data-label="Costo pieza">$${p.cp}</td>
+      <td data-label="Público">$${p.cu}</td>
+      <td><button onclick="borrar(${x})" style="width: auto; padding: 5px 12px; margin: 0; background: #333;">X</button></td>
     </tr>`).join("");
 }
 
 function borrar(i) {
-  let d = JSON.parse(localStorage.getItem("piezas3D")) || [];
-  d.splice(i, 1);
-  localStorage.setItem("piezas3D", JSON.stringify(d));
-  mostrar();
+  if(confirm("¿Eliminar?")) {
+    let d = JSON.parse(localStorage.getItem("piezas3D")) || [];
+    d.splice(i, 1);
+    localStorage.setItem("piezas3D", JSON.stringify(d));
+    mostrar();
+  }
 }
 
 function stepInput(id, direction) {
   const input = document.getElementById(id);
   if (!input) return;
-  if (direction > 0) input.stepUp();
-  else input.stepDown();
-  const min = input.min !== "" ? Number(input.min) : null;
-  const max = input.max !== "" ? Number(input.max) : null;
-  let value = Number(input.value);
-  if (min !== null && value < min) value = min;
-  if (max !== null && value > max) value = max;
-  input.value = Number.isNaN(value) ? (min ?? 0) : value;
+  direction > 0 ? input.stepUp() : input.stepDown();
+  if (Number(input.value) < 0) input.value = 0;
 }
 
 function abrir(s) { modalImg.src = s; modal.style.display = "block"; }
 function cerrarModal() { modal.style.display = "none"; }
 
 mostrar();
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch(err => {
-      console.error("Service worker registration failed:", err);
-    });
-  });
-}
