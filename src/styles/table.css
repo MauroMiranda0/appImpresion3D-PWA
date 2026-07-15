@@ -1,0 +1,131 @@
+.tabla-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tabla-header h2 {
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.tabla-count {
+  font-size: 0.75em;
+  color: var(--text-muted);
+  background: var(--bg-input);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--bg-input);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85em;
+  color: var(--text-primary);
+  transition: background var(--transition-fast);
+}
+
+tr:hover td {
+  background: var(--bg-surface-hover);
+}
+
+td.price {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-weight: 600;
+  color: var(--accent-green);
+  font-size: 0.9em;
+}
+
+td.price-public {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-weight: 700;
+  color: var(--accent-green);
+  font-size: 0.95em;
+}
+
+/* Mobile card layout */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    background: var(--bg-surface);
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 8px 4px;
+    text-align: right;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+
+  td:last-child {
+    justify-content: center;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+    padding-top: 12px;
+  }
+
+  td:last-child::before {
+    content: '';
+  }
+
+  td.price,
+  td.price-public {
+    text-align: right;
+  }
+}

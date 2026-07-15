@@ -1,0 +1,326 @@
+.contenedor {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 32px);
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 8px;
+  width: min(35vw, 100px);
+  height: auto;
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.3));
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.titulo {
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.titulo span {
+  display: block;
+  font-size: 0.65em;
+  font-weight: 400;
+  letter-spacing: 6px;
+  color: var(--accent-blue);
+  margin-top: 2px;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 3vw, 24px);
+  margin-bottom: 16px;
+  transition: border-color var(--transition-normal);
+}
+
+.card:hover {
+  border-color: #3a3a44;
+}
+
+.card-title {
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo.full {
+  grid-column: 1 / -1;
+}
+
+/* Labels e Inputs */
+label {
+  font-size: 0.75em;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 4px 0 0;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+  font-family: inherit;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-dim);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--gradient-green);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glow-green);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  margin: 0;
+  width: auto;
+  font-size: 0.8em;
+}
+
+.btn-danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.boton-guardar {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.guardar-btn {
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .guardar-btn {
+    max-width: 280px;
+    padding: 14px 32px;
+    font-size: 0.95em;
+  }
+}
+
+/* Quantity Controls */
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin: 4px 0 0;
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.quantity-control:focus-within {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-dim);
+}
+
+.quantity-control button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1em;
+  cursor: pointer;
+  padding: 8px 12px;
+  min-width: 36px;
+  min-height: 38px;
+  margin: 0;
+  border-radius: 0;
+  transition: all var(--transition-fast);
+}
+
+.quantity-control button:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+.quantity-control input {
+  width: 56px;
+  text-align: center;
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  font-size: 0.9em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  margin: 0;
+  padding: 8px 4px;
+  border-radius: 0;
+}
+
+.quantity-control input:focus {
+  box-shadow: none;
+}
+
+/* Section label for quantity pairs */
+.campo-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .campo-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Live Preview */
+.preview-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  transition: all var(--transition-normal);
+}
+
+.preview-card:hover {
+  border-color: #3a3a44;
+}
+
+.preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.preview-row--highlight {
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  padding-top: 12px;
+}
+
+.preview-label {
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.preview-value {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+.preview-value--big {
+  font-size: 1.6em;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+/* Validation */
+.validacion {
+  margin-bottom: 16px;
+}
+
+.validacion-error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.8em;
+  color: #fca5a5;
+  animation: slideDown 200ms ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

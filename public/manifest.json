@@ -1,0 +1,20 @@
+{
+  "name": "Control de Costos – Impresión 3D",
+  "short_name": "Costos 3D",
+  "description": "Calculadora de costos para impresión 3D con gestión de piezas y precios.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0B0B0F",
+  "theme_color": "#0B0B0F",
+  "categories": ["utilities", "business"],
+  "icons": [
+    {
+      "src": "./logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
