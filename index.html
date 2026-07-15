@@ -36,30 +36,25 @@
 
     <div class="card">
       <h2 class="card-title">Parámetros de Impresión</h2>
-      <div class="card-grid">
+      <div class="card-grid card-grid--4">
         <div class="campo">
-          <label>Tiempo de impresión</label>
-          <div class="campo-group">
-            <div class="campo">
-              <div class="quantity-control">
-                <button type="button" onclick="stepInput('horas', -1)">-</button>
-                <input id="horas" type="number" value="0" min="0" placeholder="0">
-                <button type="button" onclick="stepInput('horas', 1)">+</button>
-              </div>
-              <label style="font-size:0.65em; color:var(--text-muted); margin-top:4px;">Horas</label>
-            </div>
-            <div class="campo">
-              <div class="quantity-control">
-                <button type="button" onclick="stepInput('minutos', -1)">-</button>
-                <input id="minutos" type="number" value="0" min="0" placeholder="0">
-                <button type="button" onclick="stepInput('minutos', 1)">+</button>
-              </div>
-              <label style="font-size:0.65em; color:var(--text-muted); margin-top:4px;">Minutos</label>
-            </div>
+          <label for="horas">Horas</label>
+          <div class="quantity-control">
+            <button type="button" onclick="stepInput('horas', -1)">-</button>
+            <input id="horas" type="number" value="0" min="0" placeholder="0">
+            <button type="button" onclick="stepInput('horas', 1)">+</button>
           </div>
         </div>
         <div class="campo">
-          <label for="gramos">Filamento (gramos)</label>
+          <label for="minutos">Minutos</label>
+          <div class="quantity-control">
+            <button type="button" onclick="stepInput('minutos', -1)">-</button>
+            <input id="minutos" type="number" value="0" min="0" placeholder="0">
+            <button type="button" onclick="stepInput('minutos', 1)">+</button>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="gramos">Gramos</label>
           <div class="quantity-control">
             <button type="button" onclick="stepInput('gramos', -1)">-</button>
             <input id="gramos" type="number" value="0" min="0" placeholder="0">

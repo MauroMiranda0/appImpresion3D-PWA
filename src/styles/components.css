@@ -67,6 +67,22 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+.card-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 640px) {
+  .card-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .card-grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
 .campo {
   display: flex;
   flex-direction: column;
